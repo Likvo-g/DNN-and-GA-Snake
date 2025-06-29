@@ -360,12 +360,8 @@ class Game:
             if not snake.dead:
                 num += 1
 
-                # Draw snake head with special color (white)
-                x, y = get_xy(snake.body[0])
-                pg.draw.rect(self.screen, WHITE1, pg.Rect(x, y, GRID_SIZE, GRID_SIZE))
-
-                # Draw snake body segments with snake's unique color
-                for s in snake.body[1:]:
+                # Draw snake
+                for s in snake.body[0:]:
                     x, y = get_xy(s)
                     pg.draw.rect(self.screen, snake.color, pg.Rect(x, y, GRID_SIZE, GRID_SIZE))
 
@@ -374,26 +370,12 @@ class Game:
         pg.draw.rect(self.screen, RED, pg.Rect(x, y, GRID_SIZE, GRID_SIZE))
 
         # Draw status text showing living snake count and best score
-        text = "score: " + str(self.best_score)
+        text = str(self.best_score)
         font = pg.font.Font(self.font_name, 20)
         text_surface = font.render(text, True, WHITE)
         text_rect = text_surface.get_rect()
         text_rect.midtop = ((self.width / 2, 5))
         self.screen.blit(text_surface, text_rect)
-
-        # Draw grid lines for visual clarity
-        x = self.width // GRID_SIZE
-        y = (self.height - BLANK_SIZE) // GRID_SIZE + 1
-
-        # Vertical grid lines
-        for i in range(0, x):
-            pg.draw.line(self.screen, LINE_COLOR, (i * GRID_SIZE, BLANK_SIZE),
-                         (i * GRID_SIZE, (y - 1) * GRID_SIZE + BLANK_SIZE), 1)
-
-        # Horizontal grid lines
-        for i in range(0, y):
-            pg.draw.line(self.screen, LINE_COLOR, (0, i * GRID_SIZE + BLANK_SIZE),
-                         (self.width, i * GRID_SIZE + BLANK_SIZE), 1)
 
         # Update display with all drawn elements
         pg.display.flip()
