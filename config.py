@@ -7,7 +7,7 @@ GRID_SIZE = 30                   # Size of each grid cell in pixels
 BLANK_SIZE = 40                  # Height of blank area at top for status text
 ROWS = 10                        # Number of rows in game board
 COLS = 10                        # Number of columns in game board
-FPS = 10                        # Target frame rate for visual display
+FPS = 50                        # Target frame rate for visual display
 FONT_NAME = 'arial'              # Font name for text rendering
 
 # Color Definitions (RGB tuples)
